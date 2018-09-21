@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>uiRes/xb_back.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{631,466},{150,152}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{150,152}</string>
+			</dict>
+			<key>uiRes/xb_mask.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,2},{890,254}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{890,254}</string>
+			</dict>
+			<key>uiRes/xg_level.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{459,260},{203,202}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{203,202}</string>
+			</dict>
+			<key>uiRes/xg_levelclear.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{147,260},{203,202}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{203,202}</string>
+			</dict>
+			<key>uiRes/xg_mask.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{666,260},{203,202}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{203,202}</string>
+			</dict>
+			<key>uiRes/mask1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{896,2},{102,730}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{102,730}</string>
+			</dict>
+			<key>uiRes/xg_new.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{896,736},{179,119}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{179,119}</string>
+			</dict>
+			<key>uiResBeta2/xb_flag.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{459,466},{168,178}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{168,178}</string>
+			</dict>
+			<key>uiResBeta2/xb_mode.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,736},{890,254}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{890,254}</string>
+			</dict>
+			<key>uiRes/mask2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,605},{102,453}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{102,453}</string>
+			</dict>
+			<key>uiRes3/xb_tag.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{896,919},{100,100}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{100,100}</string>
+			</dict>
+			<key>uiRes3/levelstencil.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,260},{341,141}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{341,141}</string>
+			</dict>
+			<key>uiRes3/fbicon.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{147,466},{122,120}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{122,120}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>packagePlist_1.png</string>
+			<key>realTextureFileName</key>
+			<string>packagePlist_1.png</string>
+			<key>size</key>
+			<string>{1024,1024}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>1024</integer>
+			<key>height</key>
+			<integer>1024</integer>
+		</dict>
+	</dict>
+</plist>
