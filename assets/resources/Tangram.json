@@ -6,7 +6,7 @@
         "round": 50,
         "active": true,
         "price": 150,
-        "have_round": 3
+        "have_round": 0
     },
     "1": {
         "belong": "Base",

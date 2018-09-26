@@ -1,5 +1,6 @@
 const Value = require('Value');
-
+const Player = require('Player');
+const AudioManager = require('AudioManager');
 cc.Class({
     extends: cc.Component,
 
@@ -85,7 +86,19 @@ cc.Class({
             // 添加预制体
             this.node.addChild(obj);
             // 设置位置
-            obj.selfPosition = obj.position = new cc.Vec2((a * 150) - 360, -350)
+            let posY;
+            if (a % 2 == 0) {
+                posY = -350;
+            }
+            else {
+                posY = -320;
+            };
+            if (Value.picNum < 7) {
+                obj.selfPosition = obj.position = new cc.Vec2((a * 130) - 360, posY);
+            }
+            else {
+                obj.selfPosition = obj.position = new cc.Vec2((a * 80) - 360, posY);
+            }
         };
 
         // 预制子节点集合
@@ -172,11 +185,40 @@ cc.Class({
 
     // 通关判断
     win() {
+        let chooseData = Value.chooseData;
         for (var a = 0; a < this.children.length; a++) {
             this.rectArea += this.children[a].prefabArea;
             if (this.rectArea == 360000) {
-                let up = cc.instantiate(this.popup);
-                this.node.addChild(up);
+                let key = chooseData.GameName + '-' + chooseData.LevelName;
+                let gameData = JSON.parse(cc.sys.localStorage.getItem(key));
+                // 完成关卡保存数据
+                if (gameData.haveRound < chooseData.RoundNum) {
+                    gameData.haveRound++;
+                    cc.sys.localStorage.setItem(key, JSON.stringify(gameData));
+                    Player.getInstance().expUp();
+                };
+
+                // 弹窗标题设置
+                let popUp = cc.instantiate(this.popup);
+                let up = popUp.getChildByName('up');
+                up.getChildByName('Title').getChildByName('Label').getComponent(cc.Label).string = 'Win';
+
+                // 弹窗文本信息
+                let content = up.getChildByName('Content');
+                content.getChildByName('Message1').active = false;
+                let message = content.getChildByName('Message2');
+                message.active = true;
+                message.getComponent(cc.Label).string = ''
+
+                // 弹窗按钮设置
+                let btn = up.getChildByName('Btn');
+                btn.getChildByName('Cancel').active = false;
+                btn.getChildByName('Confirm').getChildByName('Label').getComponent(cc.Label).string = 'Next'
+
+                // 添加经验条
+
+                chooseData.PopupObject = popUp;
+                this.node.addChild(popUp);
             }
         }
         this.rectArea = 0;
@@ -273,9 +315,17 @@ cc.Class({
         let collider1 = this.choice.getComponent(cc.PolygonCollider);
         let inChildren = false;
         let inChoice = false;
+        for (var cc2 = 0; cc2 < collider1.world.points.length; cc2++) {
+            collider1.world.points[cc2].x = Math.ceil(collider1.world.points[cc2].x);
+            collider1.world.points[cc2].y = Math.ceil(collider1.world.points[cc2].y);
+        }
         for (var b = 0; b < this.children.length; b++) {
             if (this.children[b].inCame == 1) {
                 let childrenCollider = this.children[b].getComponent(cc.PolygonCollider);
+                for (var cc1 = 0; cc1 < childrenCollider.world.points.length; cc1++) {
+                    childrenCollider.world.points[cc1].x = Math.ceil(childrenCollider.world.points[cc1].x);
+                    childrenCollider.world.points[cc1].y = Math.ceil(childrenCollider.world.points[cc1].y);
+                }
                 // 已放置图形是否有点在选中对象内部
                 for (var d = 0; d < childrenCollider.world.points.length; d++) {
                     let childrenWorldPoint = childrenCollider.world.points[d];
@@ -361,5 +411,21 @@ cc.Class({
         }
 
         return inside;
+    },
+
+    // 重新开始
+    rePlay() {
+        let children = this.node.children;
+        for (var index = 0; index < children.length; index++) {
+            if (children[index].name == 'DrawPrefab') {
+                let object = children[index];
+                object.position = object.selfPosition;
+                object.scaleX = 0.25;
+                object.scaleY = 0.25;
+                object.zIndex = 0;
+                object.inCame = 0;
+                object.prefabArea = 0;
+            }
+        }
     }
 });
