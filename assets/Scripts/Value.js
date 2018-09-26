@@ -7,13 +7,13 @@ var Value = cc.Class({
     statics: {
         instance: null,
         chooseData: {
-            GameNme: null,
+            GameName: 'Tangram',
             LevelName: null,
-            RoundName: null,
             RoundNum: null,
             HaveRound: null,
-            PopupType: '',
+            PopupTitle: '',
             PopupObject: null,
+            picNum: null,
         },
         data: null
     },

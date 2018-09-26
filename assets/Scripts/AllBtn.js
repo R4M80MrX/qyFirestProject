@@ -19,14 +19,12 @@ cc.Class({
         }
         // 后退按钮
         else if (name == 'BackBtn') {
-            if (chooseData.RoundNum != null) {
+            let scene = cc.director.getScene();
+            if (scene.name == 'Round') {
                 cc.director.loadScene('Difficulty');
-                chooseData.RoundNum = null;
             }
-            else if (chooseData.RoundNum == null &&
-                chooseData.LevelName != null) {
+            else if (scene.name == 'Difficulty') {
                 cc.director.loadScene('Home');
-                chooseData.LevelName = null;
             }
         }
         else if (name == 'HelpBtn') {
@@ -44,17 +42,9 @@ cc.Class({
         }
         // 重新开始
         else if (name == 'ReplayBtn') {
-            let children = this.node.parent.children;
-            for (var index = 0; index < children.length; index++) {
-                if (children[index].name == 'DrawPrefab') {
-                    let object = children[index];
-                    object.position = object.selfPosition;
-                    object.scaleX = 0.25;
-                    object.scaleY = 0.25;
-                    object.zIndex = 0;
-                    object.inCame = 0;
-                    object.prefabArea = 0;
-                }
+            let gameScene = cc.director.getScene();
+            if (gameScene.name == 'Tangram') {
+                gameScene.children[0].getComponent('Tangram').rePlay();
             }
         }
         else if (name == 'Reward_darkBtn') {
@@ -77,7 +67,7 @@ cc.Class({
             // 未解锁 弹窗
             else {
                 chooseData.UnlockObject = self.node;
-                chooseData.PopupType = 'Unlock';
+                chooseData.PopupTitle = 'Unlock';
                 cc.loader.loadRes('prefab/Popup', function (err, prefab) {
                     let st = self.getComponentForName(self.node, 'Label', cc.Label).string;
                     chooseData.LevelName = st.split('\n')[0];
@@ -85,7 +75,7 @@ cc.Class({
                     let up = chooseData.PopupObject.getChildByName('up');
                     // 弹窗标题
                     let title = up.getChildByName('Title');
-                    self.getComponentForName(title, 'Lable', cc.Label).string = chooseData.PopupType;
+                    self.getComponentForName(title, 'Lable', cc.Label).string = chooseData.PopupTitle;
 
                     // 弹窗内解锁的对象
                     let selfNode = cc.instantiate(self.node);
@@ -107,13 +97,12 @@ cc.Class({
         }
         // 切换至游戏界面
         else if (name == 'RoundBtn') {
-            chooseData.GameName = 'Tangram';
             chooseData.RoundNum = self.getComponentForName(self.node, 'Label', cc.Label).string;
             cc.loader.loadRes(chooseData.GameName + '-' + chooseData.LevelName + '-' + chooseData.RoundNum + '.json',
                 function (err, object) {
-                    let xx = chooseData.GameName + '-' + chooseData.LevelName + '-' + chooseData.RoundNum + '.json';
                     if (object != null) {
                         Value.data = object.json;
+                        Value.picNum = object.json.level;
                         cc.director.loadScene(chooseData.GameName);
                     }
                     else {
@@ -131,6 +120,7 @@ cc.Class({
         else if (name == 'Confirm') {
             let popUp = this.node.parent.parent;
             let label = this.getSecondChild(popUp, 'Title', 'Lable').getComponent(cc.Label);
+            // 解锁难度
             if (label.string == 'Unlock') {
                 let jsonData = Value.data.json;
                 for (var index = 0; index < 20; index++) {
@@ -138,7 +128,10 @@ cc.Class({
                         break;
                     }
                     else if (chooseData.LevelName == jsonData[index].level_name) {
-                        jsonData[index].active = true;
+                        let key = chooseData.GameName + '-' + chooseData.LevelName;
+                        let gameData = JSON.parse(cc.sys.localStorage.getItem(key));
+                        gameData.active = true;
+                        cc.sys.localStorage.setItem(key, JSON.stringify(gameData));
                         chooseData.UnlockObject.getChildByName('dark_bg').active = false;
                     }
                 }

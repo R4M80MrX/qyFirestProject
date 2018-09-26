@@ -1,0 +1,146 @@
+{
+    "0":{
+        "belong":"Baes",
+        "color":"#F16F50",
+        "level_name":"Newbie A",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "1":{
+        "belong":"Baes",
+        "color":"#E8B80F",
+        "level_name":"Newbie B",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "2":{
+        "belong":"Baes",
+        "color":"#A2CC66",
+        "level_name":"Normal A",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "3":{
+        "belong":"Baes",
+        "color":"#66CCBA",
+        "level_name":"Normal B",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "4":{
+        "belong":"Baes",
+        "color":"#66A4CC",
+        "level_name":"Senior",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "5":{
+        "belong":"Baes",
+        "color":"#9085E4",
+        "level_name":"Expert",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "6":{
+        "belong":"Baes",
+        "color":"#D797E9",
+        "level_name":"Master",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "100":{
+        "belong":"Extend",
+        "color":"#F16F50",
+        "level_name":"Compilations A",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "101":{
+        "belong":"Extend",
+        "color":"#E8B80F",
+        "level_name":"compilations B",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "102":{
+        "belong":"Extend",
+        "color":"#A2CC66",
+        "level_name":"Square A",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "103":{
+        "belong":"Extend",
+        "color":"#66CCBA",
+        "level_name":"Square B",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "104":{
+        "belong":"Extend",
+        "color":"#66A4CC",
+        "level_name":"Square C",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "105":{
+        "belong":"Extend",
+        "color":"#9085E4",
+        "level_name":"Graph A",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "106":{
+        "belong":"Extend",
+        "color":"#D797E9",
+        "level_name":"Triangle A",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "107":{
+        "belong":"Extend",
+        "color":"#797979",
+        "level_name":"Triangle B",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    },
+    "108":{
+        "belong":"Extend",
+        "color":"#ACACAC",
+        "level_name":"Coming Soon!",
+        "round":50,
+        "active":false,
+        "price":150,
+        "have_round":0
+    }
+}
