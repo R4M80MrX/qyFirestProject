@@ -84,7 +84,11 @@ cc.Class({
                     let up = chooseData.PopupObject.getChildByName('up');
                     // 弹窗标题
                     let title = up.getChildByName('Title');
+<<<<<<< HEAD
                     self.getComponentForName(title, 'Label', cc.Label).string = chooseData.PopupTitle;
+=======
+                    self.getComponentForName(title, 'Lable', cc.Label).string = chooseData.PopupTitle;
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
 
                     // 弹窗内解锁的对象
                     let selfNode = cc.instantiate(self.node);
@@ -128,7 +132,11 @@ cc.Class({
         // 弹窗确定按钮
         else if (name == 'Confirm') {
             let popUp = this.node.parent.parent;
+<<<<<<< HEAD
             let label = this.getSecondChild(popUp, 'Title', 'Label').getComponent(cc.Label);
+=======
+            let label = this.getSecondChild(popUp, 'Title', 'Lable').getComponent(cc.Label);
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
             // 解锁难度
             if (label.string == 'Unlock') {
                 let jsonData = Value.data.json;
@@ -138,6 +146,7 @@ cc.Class({
                     }
                     // 解锁扣金币
                     else if (chooseData.LevelName == jsonData[index].level_name) {
+<<<<<<< HEAD
                         let isReduce = Player.getInstance().reduceGold(150);
                         // 金币足够 解锁关卡
                         if (isReduce) {
@@ -151,6 +160,13 @@ cc.Class({
                         else {
 
                         }
+=======
+                        let key = chooseData.GameName + '-' + chooseData.LevelName;
+                        let gameData = JSON.parse(cc.sys.localStorage.getItem(key));
+                        gameData.active = true;
+                        cc.sys.localStorage.setItem(key, JSON.stringify(gameData));
+                        chooseData.UnlockObject.getChildByName('dark_bg').active = false;
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
                     }
                 }
             }

@@ -7,6 +7,12 @@ var onGameData = {
     haveRound: null,
 }
 
+var onGameData = {
+    belong: '',
+    active: null,
+    haveRound: null,
+}
+
 cc.Class({
     extends: cc.Component,
 
@@ -32,7 +38,10 @@ cc.Class({
         this.extend1.on('touchend', this.sv1Touch, this);
         this.extend2.on('touchend', this.sv2Touch, this);
         // 加载数据
+<<<<<<< HEAD
         this.gold.getComponent(cc.Label).string = Player.getInstance().showGold();
+=======
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
         Value.getInstance().loadFile(Value.chooseData.GameName, function (data) {
             if (data != null) {
                 // 标题
@@ -50,7 +59,11 @@ cc.Class({
                     let key = Value.chooseData.GameName + '-' + jsonData.level_name;
                     let gameData = JSON.parse(cc.sys.localStorage.getItem(key));
                     // 存档为空 添加存档
+<<<<<<< HEAD
                     if (!gameData) {
+=======
+                    if (gameData == null) {
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
                         onGameData.belong = jsonData.belong;
                         onGameData.active = jsonData.active;
                         onGameData.haveRound = jsonData.have_round;

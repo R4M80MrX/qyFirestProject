@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var PlayerData = {
     level: 0,
     exp: 0,
@@ -57,6 +58,26 @@ var Player = cc.Class({
 
 Player.instance = null;
 
+=======
+var Player = cc.Class({
+    extends: cc.Component,
+    properties: {
+    },
+
+    statics: {
+        instance: null,
+    },
+
+    saveData(key, value) {
+        cc.sys.localStorage.setItem(key, value);
+    },
+
+    loadData(key) {
+        return JSON.parse(cc.sys.localStorage.getItem(key));
+    },
+});
+
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
 Player.getInstance = function () {
     if (!Player.instance) {
         Player.instance = new Player();

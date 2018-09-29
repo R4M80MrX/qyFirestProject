@@ -189,6 +189,7 @@ cc.Class({
         for (var a = 0; a < this.children.length; a++) {
             this.rectArea += this.children[a].prefabArea;
             if (this.rectArea == 360000) {
+<<<<<<< HEAD
                 let key = chooseData.GameName + '-' + chooseData.LevelName;
                 let gameData = JSON.parse(cc.sys.localStorage.getItem(key));
                 // 完成关卡保存数据
@@ -219,6 +220,18 @@ cc.Class({
 
                 chooseData.PopupObject = popUp;
                 this.node.addChild(popUp);
+=======
+                let chooseData = Value.chooseData;
+                let key = chooseData.GameName + '-' + chooseData.LevelName;
+                let gameData = JSON.parse(cc.sys.localStorage.getItem(key));
+                if (gameData.haveRound < chooseData.RoundNum) {
+                    gameData.haveRound++;
+                    cc.sys.localStorage.setItem(key, gameData);
+                };
+
+                let up = cc.instantiate(this.popup);
+                this.node.addChild(up);
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
             }
         }
         this.rectArea = 0;
