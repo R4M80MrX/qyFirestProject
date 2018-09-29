@@ -1,4 +1,17 @@
 const Value = require('Value');
+const Player = require('Player');
+
+var onGameData = {
+    belong: '',
+    active: null,
+    haveRound: null,
+}
+
+var onGameData = {
+    belong: '',
+    active: null,
+    haveRound: null,
+}
 
 cc.Class({
     extends: cc.Component,
@@ -16,6 +29,7 @@ cc.Class({
         chooseBtn1: cc.Prefab,
         chooseBtn2: cc.Prefab,
         comingSoon: cc.Prefab,
+        gold: cc.Node,
     },
 
     onLoad() {
@@ -24,7 +38,11 @@ cc.Class({
         this.extend1.on('touchend', this.sv1Touch, this);
         this.extend2.on('touchend', this.sv2Touch, this);
         // 加载数据
-        Value.getInstance().loadFile('Tangram', function (data) {
+<<<<<<< HEAD
+        this.gold.getComponent(cc.Label).string = Player.getInstance().showGold();
+=======
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
+        Value.getInstance().loadFile(Value.chooseData.GameName, function (data) {
             if (data != null) {
                 // 标题
                 self.titleLabel.string = data._name;
@@ -37,8 +55,23 @@ cc.Class({
                     if (jsonData == null) {
                         break;
                     }
-                    else if (jsonData.belong == 'Base') {
-                        self.setChooseBtn(self.sv1, self.chooseBtn1, jsonData);
+                    // 检查游戏存档
+                    let key = Value.chooseData.GameName + '-' + jsonData.level_name;
+                    let gameData = JSON.parse(cc.sys.localStorage.getItem(key));
+                    // 存档为空 添加存档
+<<<<<<< HEAD
+                    if (!gameData) {
+=======
+                    if (gameData == null) {
+>>>>>>> f1fbe53fcd3f8d6aa0c0af75e4c8f990657d8694
+                        onGameData.belong = jsonData.belong;
+                        onGameData.active = jsonData.active;
+                        onGameData.haveRound = jsonData.have_round;
+                        cc.sys.localStorage.setItem(key, JSON.stringify(onGameData));
+                        gameData = JSON.parse(cc.sys.localStorage.getItem(key));
+                    }
+                    if (jsonData.belong == 'Base') {
+                        self.setChooseBtn(self.sv1, self.chooseBtn1, jsonData, gameData);
                     }
                     else if (jsonData.belong == 'Extend') {
                         if (jsonData.level_name == 'Coming Soon!') {
@@ -46,7 +79,7 @@ cc.Class({
                             self.sv2.getChildByName('view').getChildByName('content').addChild(comingbtn);
                             break;
                         }
-                        self.setChooseBtn(self.sv2, self.chooseBtn2, jsonData);
+                        self.setChooseBtn(self.sv2, self.chooseBtn2, jsonData, gameData);
                     }
                 };
                 self.sv1.getComponent(cc.ScrollView).scrollToTop(0.1);
@@ -77,7 +110,7 @@ cc.Class({
     },
 
     // 生成按钮并设置参数 extend:ScrollView对象 btn:按钮预制体对象
-    setChooseBtn(extend, btn, jsonData) {
+    setChooseBtn(extend, btn, jsonData, gameData) {
         let extendContent = extend.getChildByName('view').getChildByName('content');
         let object = cc.instantiate(btn);
         // 按钮颜色
@@ -85,9 +118,9 @@ cc.Class({
         object.color = color.fromHEX(jsonData.color);
         // 按钮标题
         object.getChildByName('Label').getComponent(cc.Label).string =
-            jsonData.level_name + '\n' + jsonData.have_round + '/' + jsonData.round;
+            jsonData.level_name + '\n' + gameData.haveRound + '/' + jsonData.round;
         // 解锁关卡
-        if (jsonData.active == true) {
+        if (gameData.active == true) {
             object.getChildByName('dark_bg').active = false;
         }
         // 价格
@@ -95,9 +128,9 @@ cc.Class({
             object.getChildByName('dark_bg').getChildByName('Label').getComponent(cc.Label).string = jsonData.price;
         };
         // 激活奖章
-        if (jsonData.have_round == jsonData.round) {
+        if (gameData.haveRound == jsonData.round) {
             object.getChildByName('medal_bg').getChildByName('medal').active = true;
         };
         extendContent.addChild(object);
-    }
+    },
 });

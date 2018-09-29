@@ -837,7 +837,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 97,
+      "width": 0,
       "height": 40
     },
     "_rotationX": 0,
@@ -905,7 +905,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -104,
+      "x": -55.5,
       "y": 0
     },
     "_skewX": 0,
@@ -1117,7 +1117,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 64,
+      "x": 15.5,
       "y": 0
     },
     "_skewX": 0,
@@ -1191,8 +1191,8 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "99999",
-    "_N$horizontalAlign": 0,
+    "_N$string": "",
+    "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0
@@ -2091,6 +2091,9 @@
     },
     "comingSoon": {
       "__uuid__": "0ff4d27c-5143-4f40-9de6-865121e33bb2"
+    },
+    "gold": {
+      "__id__": 22
     }
   }
 ]
